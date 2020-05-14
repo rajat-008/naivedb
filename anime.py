@@ -50,8 +50,14 @@ class Table:
 
     def update(self,key,data):
         pass
-    
-
+   
+    def delete(self,key):
+        rrn=self.index.tree.find(key)
+        if not rrn:
+            return False
+        self.file.seek(rrn,0)
+        self.file.write("*")
+        return True
 
     def search(self,key):
         rrn=self.index.tree.find(key)
@@ -78,4 +84,5 @@ def main():
     an.insert({"name":"berserk","genre":"gore","author":"xyz"})
     printTree(an.index.tree)
     print(an.search("berserk"))
+    an.delete("naruto")
 main()

@@ -23,3 +23,6 @@ berserk|gore|xyz|||||||||||||||||||||||||||||
 naruto|shonen|masashi||||||||||||||||||||||||
 boruto|shonen|masashi||||||||||||||||||||||||
 berserk|gore|xyz|||||||||||||||||||||||||||||
+*aruto|shonen|masashi||||||||||||||||||||||||
+boruto|shonen|masashi||||||||||||||||||||||||
+berserk|gore|xyz|||||||||||||||||||||||||||||
