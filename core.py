@@ -23,7 +23,6 @@ class Table:
         #step 1:insert record in table file
         #step 1:insert key in index file
         pass
-
     def search(self,key):
         #step1: retrieve the address of key from index
         #step2: goto address from above and retrieve from above
@@ -62,3 +61,7 @@ class NaiveDB:
 
     def __init__(self,):
         pass
+
+
+db=NaiveDB(....)
+db.insert("anime",{})
