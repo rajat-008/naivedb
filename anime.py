@@ -34,12 +34,15 @@ class Table:
 
 
     def insert(self,data):
-        self.file.seek(0,2)
-        rrn=self.file.tell()
-        print(rrn)
-        self.file.write(self.pack(data))
-        self.file.flush()
-        self.index.tree.insert(data[self.primary_key],rrn)
+        if (self.index.tree.find(data[self.primary_key])) == -1:
+            self.file.seek(0,2)
+            rrn=self.file.tell()
+            print(rrn)
+            self.file.write(self.pack(data))
+            self.file.flush()
+            self.index.tree.insert(data[self.primary_key],rrn)
+            return True
+        return False
 
     
     def unpack(self,data):
@@ -50,36 +53,34 @@ class Table:
         return packet
 
 
-
-
-
     def update(self,key,data):
         rrn=self.index.tree.find(key)
+        if rrn==-1:
+            return False
         self.file.seek(int(rrn),0)
         self.file.write(self.pack(data))
         self.file.flush()
         return True
         
-     def delete(self,key):
+    def delete(self,key):
         rrn=self.index.tree.find(key)
-        if not rrn:
+        print(rrn)
+        if rrn==-1:
             return False
         self.file.seek(rrn,0)
         self.file.write("*")
+        self.file.flush()
         return True
         
-
-        
-    
-
-
     def search(self,key):
         rrn=self.index.tree.find(key)
+        if rrn==-1:
+            return False
         self.file.seek(int(rrn),0)
         data=self.file.readline()
+        print(data)
         return self.unpack(data)
-         
-     
+              
 
 def main():
     anime_meta={
@@ -97,7 +98,9 @@ def main():
     an.insert({"name":"boruto","genre":"shonen","author":"masashi"})
     an.insert({"name":"berserk","genre":"gore","author":"xyz"})
     printTree(an.index.tree)
+    
     print(an.search("berserk"))
+    
     an.update("boruto",{"name":"deathnote","genre":"gore","author":"xyzq"})
     an.delete("naruto")
 main()

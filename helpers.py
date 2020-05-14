@@ -84,7 +84,7 @@ class BplusTree:
         for i, item in enumerate(l.keys):
             if item == key:
                 return l.values[i][0]
-        return False
+        return -1
 
     def insertINParent(self, n, key, ndash):
         if (self.root == n):
