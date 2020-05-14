@@ -22,7 +22,7 @@ class Table:
         fhand.close()
 
 
-    def insert(self,data):
+    def pack(self,data):
         buffer=''
         for field in self.fields:
             buffer+=data[field]
@@ -30,13 +30,18 @@ class Table:
         cn=len(buffer)
         buffer+=('|'*(45-cn))
         buffer+='\n'
+        return buffer
+
+
+    def insert(self,data):
         self.file.seek(0,2)
         rrn=self.file.tell()
         print(rrn)
-        self.file.write(buffer)
+        self.file.write(self.pack(data))
         self.file.flush()
         self.index.tree.insert(data[self.primary_key],rrn)
 
+    
     def unpack(self,data):
         items=data.split('|')
         packet={}
@@ -49,15 +54,24 @@ class Table:
 
 
     def update(self,key,data):
-        pass
-   
-    def delete(self,key):
+        rrn=self.index.tree.find(key)
+        self.file.seek(int(rrn),0)
+        self.file.write(self.pack(data))
+        self.file.flush()
+        return True
+        
+     def delete(self,key):
         rrn=self.index.tree.find(key)
         if not rrn:
             return False
         self.file.seek(rrn,0)
         self.file.write("*")
         return True
+        
+
+        
+    
+
 
     def search(self,key):
         rrn=self.index.tree.find(key)
@@ -84,5 +98,6 @@ def main():
     an.insert({"name":"berserk","genre":"gore","author":"xyz"})
     printTree(an.index.tree)
     print(an.search("berserk"))
+    an.update("boruto",{"name":"deathnote","genre":"gore","author":"xyzq"})
     an.delete("naruto")
 main()
