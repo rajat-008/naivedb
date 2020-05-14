@@ -22,7 +22,7 @@ class Table:
         fhand.close()
 
 
-    def insert(self,data):
+    def pack(self,data):
         buffer=''
         for field in self.fields:
             buffer+=data[field]
@@ -30,13 +30,18 @@ class Table:
         cn=len(buffer)
         buffer+=('|'*(45-cn))
         buffer+='\n'
+        return buffer
+
+
+    def insert(self,data):
         self.file.seek(0,2)
         rrn=self.file.tell()
         print(rrn)
-        self.file.write(buffer)
+        self.file.write(self.pack(data))
         self.file.flush()
         self.index.tree.insert(data[self.primary_key],rrn)
 
+    
     def unpack(self,data):
         items=data.split('|')
         packet={}
@@ -49,7 +54,16 @@ class Table:
 
 
     def update(self,key,data):
-        pass
+        rrn=self.index.tree.find(key)
+        self.file.seek(int(rrn),0)
+        self.file.write(self.pack(data))
+        self.file.flush()
+        return True
+        
+
+        
+
+        
     
 
 
@@ -78,4 +92,5 @@ def main():
     an.insert({"name":"berserk","genre":"gore","author":"xyz"})
     printTree(an.index.tree)
     print(an.search("berserk"))
+    an.update("boruto",{"name":"deathnote","genre":"gore","author":"xyzq"})
 main()
