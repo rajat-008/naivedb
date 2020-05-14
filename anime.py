@@ -2,15 +2,14 @@ from index import BPlusTreeIndex,printTree
 
 class Table:        
     def __init__(self,file_name,table_meta):
+        self.name=table_meta["name"]
         self.file_name=file_name
-        self.file=open(file_name,"a+")
+        self.file=open(file_name,"r+")
         self.fields=table_meta["fields"]
         self.index_file_name=table_meta["index_file_name"]
         self.index=BPlusTreeIndex(self.index_file_name)
         self.primary_key=table_meta["primary_key"]
     
-
-
     def unpack_display(self):
         try:
             fhand = open('sample.txt','r')
@@ -38,13 +37,27 @@ class Table:
         self.file.flush()
         self.index.tree.insert(data[self.primary_key],rrn)
 
+    def unpack(self,data):
+        items=data.split('|')
+        packet={}
+        for i,item in enumerate(self.fields):
+            packet[item]=items[i]
+        return packet
+
+
+
+
+
+    def update(self,key,data):
+        pass
     
 
 
     def search(self,key):
         rrn=self.index.tree.find(key)
         self.file.seek(int(rrn),0)
-        return self.file.readline()
+        data=self.file.readline()
+        return self.unpack(data)
          
      
 
@@ -64,5 +77,5 @@ def main():
     an.insert({"name":"boruto","genre":"shonen","author":"masashi"})
     an.insert({"name":"berserk","genre":"gore","author":"xyz"})
     printTree(an.index.tree)
-    print(an.search("boruto"))
+    print(an.search("berserk"))
 main()
