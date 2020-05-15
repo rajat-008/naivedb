@@ -1,4 +1,4 @@
-from index import BPlusTreeIndex,printTree
+from index import ISAM,printTree
 
 class Table:        
     def __init__(self,file_name,table_meta):
@@ -7,20 +7,8 @@ class Table:
         self.file=open(file_name,"r+")
         self.fields=table_meta["fields"]
         self.index_file_name=table_meta["index_file_name"]
-        self.index=BPlusTreeIndex(self.index_file_name)
+        self.index=ISAM(self.index_file_name)
         self.primary_key=table_meta["primary_key"]
-    
-    def unpack_display(self):
-        try:
-            fhand = open('sample.txt','r')
-        except:
-            print('File cannot be opened:', "sample.txt")
-            exit()
-        fl =fhand.readlines()
-        for x in fl:
-            print(x)
-        fhand.close()
-
 
     def pack(self,data):
         buffer=''
