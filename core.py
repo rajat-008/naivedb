@@ -61,7 +61,7 @@ class Table:
         print(rrn)
         if rrn==-1:
             return False
-        self.file.seek(rrn,0)
+        self.file.seek(int(rrn),0)
         self.file.write("*")
         self.file.flush()
         return True

@@ -6,18 +6,13 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>Search results for {{data.name}}</h1>
+
     <b>Name</b>:{{data.name}}<br>
     <b>Author</b>:{{data.author}}<br>
     <b>Genre</b>:{{data.genre}}<br>
 
-    <form action="/update" method="post">
-        <input type="submit" value="update">
-        </form>
-
-    <form action="/delete" method="post">
-    <input type="submit" value="delete">
-</form>
+    <a href="/update/{{ data.name }}">update</a>
+    <a href="/delete/{{ data.name }}">delete</a>
 
 </body>
 </html>
