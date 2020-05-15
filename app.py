@@ -15,3 +15,13 @@ def search():
     data=db.anime.search(name)
     print(data)
     return render_template("search.html",data=data)
+
+@app.route("/update",methods=["POST"])
+def update():
+    data=request.form.to_dict(value,name)
+    print(data)
+    data=db.anime.update(data)
+    print(data)
+    return render_template("search.html",data=data)
+
+    
