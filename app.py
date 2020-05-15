@@ -14,4 +14,4 @@ def search():
     print(name)
     data=db.anime.search(name)
     print(data)
-    return render_template("search.html",context=data)
+    return render_template("search.html",data=data)

@@ -36,7 +36,7 @@ class Table:
             print(rrn)
             self.file.write(self.pack(data))
             self.file.flush()
-            self.index.tree.insert(data[self.primary_key],rrn)
+            self.index.write(data[self.primary_key],rrn)
             return True
         return False
     
