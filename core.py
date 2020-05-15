@@ -65,3 +65,6 @@ class NaiveDB:
 
 db=NaiveDB(....)
 db.insert("anime",{})
+
+#load meta data
+#load tables(files and indexes)
