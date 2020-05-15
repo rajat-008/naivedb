@@ -4,7 +4,7 @@ def unpack_index(record):
     return tuple(record.split(',',))
 
 
-class BPlusTreeIndex:
+class ISAM:
     
     def __init__(self,index_file_name):
         self.target=open(index_file_name,"r")
@@ -16,7 +16,7 @@ class BPlusTreeIndex:
         printTree(self.tree)
 
 def main():
-    index=BPlusTreeIndex("index.txt")
+    index=ISAM("index.txt")
     print(index.tree.find("naruto"))
     print(index.tree.find("4"))
     print(index.tree.find("7"))
