@@ -124,7 +124,6 @@ class BplusTree:
 
     def delete(self, key, value):
         node_ = self.search(key)
-
         temp = 0
         for i, item in enumerate(node_.keys):
             if item == key:

@@ -6,23 +6,43 @@ def unpack_index(record):
 def pack_index(key,value):
     return key+','+str(value)+'\n'
 
-class ISAM:
+class ISAM(BplusTree):
     
     def __init__(self,index_file_name):
+        super().__init__(8)
         self.file_name=index_file_name
         self.target=open(index_file_name,"r")
-        self.tree=BplusTree(8)
         with open(index_file_name, 'r') as f:
             for line in f:
                 record=unpack_index(line)
-                self.tree.insert(*record)
-        printTree(self.tree)
-    
-    def write(self,key,value):
-        self.tree.insert(key,value)
+                if record[0][0]=="*":
+                    continue
+                super().insert(*record)    
+
+
+    def insert(self,key,value):
+        super().insert(key,value)
         file=open(self.file_name,"a")
         file.write(pack_index(key,value))
         file.close()
+
+    def delete(self,key,rrn):
+        file=open(self.file_name,"r+")
+        irrn=file.tell()
+        line=file.readline()
+        while line:
+            ikey,_=unpack_index(line)
+            if ikey==key:
+                break
+            irrn=file.tell()
+            line=file.readline()
+            
+        super().delete(key,rrn)
+        file.seek(int(irrn),0)
+        file.write("*")
+        file.close()
+
+    
 
 
 

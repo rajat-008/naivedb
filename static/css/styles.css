@@ -1,0 +1,10 @@
+.btn{
+    display: inline-block;
+    background-color: #df1335;
+    color: blanchedalmond;
+    border-radius: 5%;
+
+    width: 10%;
+    text-align: center;
+    text-decoration: none;
+}

@@ -1,6 +1,7 @@
-berserk,0
-naruto,46
-boruto,92
+*erserk,0
+*aruto,46
+*oruto,92
 death note,138
 dbz,184
 Adithya m,235
+wdhr,276

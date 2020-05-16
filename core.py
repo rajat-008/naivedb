@@ -30,13 +30,12 @@ class Table:
         return buffer
 
     def insert(self,data):
-        if (self.index.tree.find(data[self.primary_key])) == -1:
+        if (self.index.find(data[self.primary_key])) == -1:
             self.file.seek(0,2)
             rrn=self.file.tell()
-            print(rrn)
             self.file.write(self.pack(data))
             self.file.flush()
-            self.index.write(data[self.primary_key],rrn)
+            self.index.insert(data[self.primary_key],rrn)
             return True
         return False
     
@@ -48,7 +47,7 @@ class Table:
         return packet
 
     def update(self,key,data):
-        rrn=self.index.tree.find(key)
+        rrn=self.index.find(key)
         if rrn==-1:
             return False
         self.file.seek(int(rrn),0)
@@ -57,22 +56,22 @@ class Table:
         return True
         
     def delete(self,key):
-        rrn=self.index.tree.find(key)
+        rrn=self.index.find(key)
         print(rrn)
         if rrn==-1:
             return False
         self.file.seek(int(rrn),0)
         self.file.write("*")
         self.file.flush()
+        self.index.delete(key,rrn)
         return True
         
     def search(self,key):
-        rrn=self.index.tree.find(key)
+        rrn=self.index.find(key)
         if rrn==-1:
             return False
         self.file.seek(int(rrn),0)
         data=self.file.readline()
-        print(data)
         return self.unpack(data)
 
 
