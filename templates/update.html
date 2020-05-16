@@ -1,16 +1,31 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <form action="/update/{{ pkey }}" method="post">
-      
-        <input type="text" name="author">
-        <input type="text" name="genre">
-        <input type="submit">
-    </form>
-</body>
-</html>
+{% extends "insert.html" %}
+{% block content %} 
+<h2>Update Record</h2>
+
+<div class="container">
+  <form action="/update" method="post">
+    
+    <div class="row">
+      <div class="col-25">
+        <label for="author">Author</label>
+      </div>
+      <div class="col-75">
+        <input type="text" id="author" name="author" placeholder="enter author name">
+      </div>
+    </div>
+    <div class="row">
+        <div class="col-25">
+          <label for="genre">Genre</label>
+        </div>
+        <div class="col-75">
+          <input type="text" id="genre" name="genre" placeholder="enter genre">
+        </div>
+      </div>
+    
+    
+    <div class="row">
+      <input type="submit" value="Update">
+    </div>
+  </form>
+</div>
+{% endblock %}
