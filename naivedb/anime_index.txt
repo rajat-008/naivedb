@@ -1,6 +1,6 @@
 *erserk,0
-*aruto,46
-*oruto,92
+naruto,46
+boruto,92
 death note,138
 dbz,184
 Adithya m,235
@@ -8,6 +8,10 @@ wdhr,276
 adi,282
 fakaho7403@mailrunner.net,329
 Self Help,414
+<<<<<<< HEAD
 *erserk,470
 berserk,517
 world trigger,564
+=======
+berserk,460
+>>>>>>> 8602cfb7bb639f1896723139d45f737fa606c512
