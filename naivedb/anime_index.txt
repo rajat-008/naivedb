@@ -1,6 +1,6 @@
 *erserk,0
-*aruto,46
-*oruto,92
+naruto,46
+boruto,92
 death note,138
 dbz,184
 Adithya m,235
@@ -8,3 +8,4 @@ wdhr,276
 adi,282
 fakaho7403@mailrunner.net,329
 Self Help,414
+berserk,460
