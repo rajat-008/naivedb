@@ -1,7 +1,7 @@
 from flask import Flask,render_template,request, redirect,url_for
-from core import NaiveDB
+from naivedb.core import NaiveDB
 app=Flask(__name__)
-db=NaiveDB("naivedb/")
+db=NaiveDB(".")
 
 @app.route("/")
 @app.route("/index")
@@ -19,6 +19,8 @@ def insert():
 @app.route("/record/<string:pkey>")
 def render_record(pkey):
     data=db.anime.search(pkey)
+    if data==False:
+        return "record not found",404
     return render_template("display_record.html",data=data)
 
 @app.route("/search",methods=["POST"])
@@ -40,3 +42,6 @@ def update(pkey):
 def delete(pkey):
     db.anime.delete(pkey)
     return redirect(url_for("index"))
+
+if __name__ == "__main__":
+    app.run(debug=True)

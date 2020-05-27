@@ -1,4 +1,4 @@
-from helpers import *
+from .helpers import BplusTree
 
 def unpack_index(record):
     return tuple(record.split(',',))

@@ -1,21 +1,21 @@
 import json
 import os
-from helpers import (
+from .helpers import (
     MissingDataException,
     FileMissing,
     NaiveDBException
-) 
+)
 
-from index import ISAM
+from .index import ISAM
 
 class Table:        
-    def __init__(self,table_meta,db_loc):
+    def __init__(self,table_meta,db_path):
         self.name=table_meta["name"]
-        self.loc=db_loc
+        self.loc=db_path
         self.file_name=table_meta["file_name"]
         self.file=open(self.loc+self.file_name,"r+")
         self.fields=table_meta["fields"]
-        self.index_file_name=db_loc+table_meta["index_file_name"]
+        self.index_file_name=db_path+table_meta["index_file_name"]
         self.index=ISAM(self.index_file_name)
         self.primary_key=table_meta["primary_key"]
 
@@ -79,7 +79,8 @@ class Table:
 class NaiveDB:
 
     @staticmethod
-    def create_db(name='database',loc='./',tables=None,):
+    def create_db(name='database',loc='.',tables=None,):
+        loc+='/'
         if not tables:
             raise MissingDataException("Database without tables cannot be created.")
         for table in tables:
@@ -90,30 +91,37 @@ class NaiveDB:
             "tables":tables,
             "db_loc":loc
         }
-        db_path=os.path.join(loc,"naivedb")
+        db_path=os.path.join(loc,".naivedb/")
         os.umask(0)
         os.mkdir(db_path)
-        with open(loc+"naivedb/meta.json", 'w') as outfile:
+        with open(db_path+"meta.json", 'w') as outfile:
             json.dump(db_meta,outfile)
         for table in tables:
-            open("naivedb/"+table["name"]+".txt","x").close()
-            open("naivedb/"+table["name"]+"_index.txt","x").close()
+            open(db_path+table["name"]+".txt","x").close()
+            open(db_path+table["name"]+"_index.txt","x").close()
         return 
 
     def __init__(self,db_loc):
+        db_path=db_loc+"/.naivedb/"
         try:
-            with open(db_loc+"meta.json","r") as meta_file:
+            with open(db_path+"meta.json","r") as meta_file:
                 self.meta_data=json.load(meta_file)
         except FileNotFoundError:
-            raise NaiveDBException("DataBase not found at the location")
+            raise NaiveDBException("db_path")
         for table in self.meta_data["tables"]:
-            table_obj=Table(table,db_loc)
+            table_obj=Table(table,db_path)
             setattr(self,table["name"],table_obj)
     
 def main():
-    db=NaiveDB("naivedb/")
+    db=NaiveDB("./")
     print(db.meta_data)
     print(db.anime.insert({"name":"boruto","author":"masashi","genre":"shonen"}))
+
+def create_test():
+    
+    NaiveDB.create_db("dummy","./dummy",[{"name":"anime","fields": ["name", "author", "genre"], "primary_key": "name"},{"name":"cast","fields": ["name", "anime", "gender"], "primary_key": "name"}])
+    return
+
 
 hello=[{"name":"anime","fields": ["name", "author", "genre"], "primary_key": "name"},{"name":"cast","fields": ["name", "anime", "gender"], "primary_key": "name"}]
 if __name__ == "__main__":

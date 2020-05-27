@@ -3,7 +3,8 @@ class NaiveDBException(Exception):
         self.msg=msg
 
 class MissingDataException(NaiveDBException):
-    pass
+    def __init__(self,loc):
+        self.msg="database not found at location"+loc
 
 class FileMissing(NaiveDBException):
     pass
