@@ -65,7 +65,7 @@ class BplusTree:
 
     def search(self, key):
         current_node = self.root
-        while(current_node.is_leaf == False):
+        while(current_node.is_leaf is False):
             temp2 = current_node.keys
             for i in range(len(temp2)):
                 if (key == temp2[i]):
@@ -164,7 +164,7 @@ class BplusTree:
             node_.values[0].parent = None
             del node_
             return
-        elif (len(node_.values) < int(math.ceil(node_.order / 2)) and node_.is_leaf == False) or (len(node_.keys) < int(math.ceil((node_.order - 1) / 2)) and node_.is_leaf == True):
+        elif (len(node_.values) < int(math.ceil(node_.order / 2)) and node_.is_leaf is False) or (len(node_.keys) < int(math.ceil((node_.order - 1) / 2)) and node_.is_leaf is True):
 
             is_predecessor = 0
             parentNode = node_.parent
@@ -282,7 +282,7 @@ def printTree(tree):
     while (len(lst) != 0):
         x = lst.pop(0)
         lev = level.pop(0)
-        if (x.is_leaf == False):
+        if (x.is_leaf is False):
             for i, item in enumerate(x.values):
                 print(item.keys,item.values)
         else:
