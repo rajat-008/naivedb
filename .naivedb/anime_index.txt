@@ -1,5 +1,5 @@
 *erserk,0
-naruto,46
+*aruto,46
 boruto,92
 death note,138
 dbz,184
@@ -8,4 +8,10 @@ wdhr,276
 adi,282
 fakaho7403@mailrunner.net,329
 Self Help,414
+*erserk,470
+berserk,517
+world trigger,564
 berserk,460
+bnmit,644
+Rajat,690
+snehal,736
