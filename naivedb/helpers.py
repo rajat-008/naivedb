@@ -1,3 +1,5 @@
+import math
+
 class NaiveDBException(Exception):
     def __init__(self,msg):
         self.msg=msg
@@ -5,10 +7,11 @@ class NaiveDBException(Exception):
 class MissingDataException(NaiveDBException):
     def __init__(self,loc):
         self.msg="database not found at location"+loc
+
 class FileMissing(NaiveDBException):
     pass
 
-import math
+
 
 
 class Node:
@@ -38,7 +41,6 @@ class Node:
         else:
             self.keys = [key]
             self.values = [[value]]
-
 
 class BplusTree:
     def __init__(self, order):
@@ -217,6 +219,7 @@ class BplusTree:
                 del node_
             else:
                 if is_predecessor == 1:
+                    p={}
                     if not node_.is_leaf:
                         ndashpm = ndash.values.pop(-1)
                         ndashkm_1 = ndash.keys.pop(-1)
