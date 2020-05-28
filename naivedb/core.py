@@ -3,7 +3,8 @@ import os
 from .helpers import (
     MissingDataException,
     FileMissing,
-    NaiveDBException
+    NaiveDBException,
+    printTree
 )
 
 from .index import ISAM
@@ -18,6 +19,18 @@ class Table:
         self.index_file_name=db_path+table_meta["index_file_name"]
         self.index=ISAM(self.index_file_name)
         self.primary_key=table_meta["primary_key"]
+
+    def fetch_all(self):
+        rrns=printTree(self.index)
+        records=[]
+        for rrn in rrns:
+            self.file.seek(int(rrn),0)
+            record=self.file.readline()
+            record=self.unpack(record)
+            records.append(record)
+        return records
+
+
 
     def pack(self,data):
         buffer=''
@@ -121,8 +134,3 @@ def create_test():
     
     NaiveDB.create_db("dummy","./dummy",[{"name":"anime","fields": ["name", "author", "genre"], "primary_key": "name"},{"name":"cast","fields": ["name", "anime", "gender"], "primary_key": "name"}])
     return
-
-
-hello=[{"name":"anime","fields": ["name", "author", "genre"], "primary_key": "name"},{"name":"cast","fields": ["name", "anime", "gender"], "primary_key": "name"}]
-if __name__ == "__main__":
-    main()

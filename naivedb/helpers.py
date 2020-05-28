@@ -279,7 +279,7 @@ def printTree(tree):
     leaf = None
     flag = 0
     lev_leaf = 0
-
+    items=[]
     node1 = Node(str(level[0]) + str(tree.root.keys))
     print("printing tree")
     while (len(lst) != 0):
@@ -287,12 +287,12 @@ def printTree(tree):
         lev = level.pop(0)
         if (x.is_leaf is False):
             for i, item in enumerate(x.values):
-                print(item.keys,item.values)
+                items.append(item.values.split("\n")[0])
         else:
             for i, item in enumerate(x.values):
-                print(x.keys[i],item)
+                items.append(item[0].split("\n")[0])
             if (flag == 0):
                 lev_leaf = lev
                 leaf = x
                 flag = 1
-    print("done printing tree")
+    return items

@@ -1,8 +1,8 @@
 Naruto,0
-One Piece,47
-Full Metal Alchemist,94
-Dragon Ball,142
-Berserk,189
-Koruko's basketball,236
-Demon Slayer,284
-*word Art Online,331
+One Piece,46
+Full Metal Alchemist,92
+Dragon Ball,138
+Berserk,184
+Koruko's basketball,230
+Demon Slayer,276
+*word Art Online,322

@@ -23,6 +23,12 @@ def render_record(pkey):
         return "record not found",404
     return render_template("display_record.html",data=data)
 
+@app.route("/fetch_all")
+def fetch_all():
+    records=db.anime.fetch_all()
+    return render_template("display_all.html",records=records)
+
+
 @app.route("/search",methods=["POST"])
 def search():
     name=request.form.get("name")
