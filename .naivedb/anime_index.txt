@@ -1,17 +1,8 @@
-*erserk,0
-*aruto,46
-boruto,92
-death note,138
-dbz,184
-Adithya m,235
-wdhr,276
-adi,282
-fakaho7403@mailrunner.net,329
-Self Help,414
-*erserk,470
-berserk,517
-world trigger,564
-berserk,460
-bnmit,644
-Rajat,690
-snehal,736
+Naruto,0
+One Piece,47
+Full Metal Alchemist,94
+Dragon Ball,142
+Berserk,189
+Koruko's basketball,236
+Demon Slayer,284
+*word Art Online,331
