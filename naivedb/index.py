@@ -1,7 +1,7 @@
 from .helpers import BplusTree
 
 def unpack_index(record):
-    return tuple(record.split(',',))
+    return tuple(record.split(','))
 
 def pack_index(key,value):
     return key+','+str(value)+'\n'

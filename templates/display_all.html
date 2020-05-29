@@ -6,18 +6,18 @@
     <title>Document</title>
 </head>
 <body>
-    <table>
-        <thead>
-            <th>Anime</th>
-            <th>Author</th>
-            <th>Genre</th>
-        </thead>
-        <tbody>
+    <table style="border: solid;" >
+        <thead style="border: solid;">
+            <th style="border: solid;">Anime</th>
+            <th style="border: solid;">Author</th>
+            <th style="border: solid;">Genre</th>
+        </thead >
+        <tbody style="border: solid;">
             {% for record in records %}
-            <tr>
-                <td>{{record.name}}</td>
-                <td>{{record.author}}</td>
-                <td>{{record.genre}}</td>
+            <tr style="border: solid;">
+                <td style="border: solid;">{{record.name}}</td>
+                <td style="border: solid;">{{record.author}}</td>
+                <td style="border: solid;">{{record.genre}}</td>
             </tr>
             {% endfor %}
         </tbody>

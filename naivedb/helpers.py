@@ -287,7 +287,8 @@ def printTree(tree):
         lev = level.pop(0)
         if (x.is_leaf is False):
             for i, item in enumerate(x.values):
-                items.append(item.values.split("\n")[0])
+                print(item.values[0][0])
+                items.append(item.values[0][0].split("\n")[0])
         else:
             for i, item in enumerate(x.values):
                 items.append(item[0].split("\n")[0])
