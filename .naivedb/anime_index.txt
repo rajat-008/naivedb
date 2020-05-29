@@ -6,3 +6,4 @@ Berserk,184
 Koruko's basketball,230
 Demon Slayer,276
 *word Art Online,322
+Sword Art Online,368

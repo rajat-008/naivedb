@@ -30,8 +30,6 @@ class Table:
             records.append(record)
         return records
 
-
-
     def pack(self,data):
         buffer=''
         for field in self.fields:
