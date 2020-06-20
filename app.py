@@ -1,5 +1,5 @@
 from flask import Flask,render_template,request, redirect,url_for
-from naivedb.core import NaiveDB
+from naivedb import NaiveDB
 app=Flask(__name__)
 db=NaiveDB(".")
 
