@@ -98,8 +98,8 @@ class NaiveDB:
         for table in tables:
             table["file_name"]=table["name"]+".txt"
             table["index_file_name"]=table["name"]+"_index.txt"
-            open(os.path.join(db_path,table["name"]+".txt","x")).close()
-            open(db_path+table["name"]+"_index.txt","x").close()
+            open(os.path.join(db_path,table["name"]+".txt"),"x").close()
+            open(os.path.join(db_path,table["name"]+"_index.txt"), "x").close()
         db_meta={
             "name":name,
             "tables":tables,
