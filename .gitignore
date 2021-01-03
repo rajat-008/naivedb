@@ -139,3 +139,5 @@ cython_debug/
 
 #vscode
 .vscode/
+__pycache__/
+.gitignore
