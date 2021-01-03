@@ -10,7 +10,7 @@ NaiveDB is a easy to use all Python database, inspired by the [TinyDB project](h
 * Allow addition and updation of Tables after DB creation.
 
 ## Decision log
-* The format in which the table data is accepted, considering the ease to migrate to a delcarative format(and although it may seem verbose now, the declarative format will make the decision worth it).
+* The format in which the table data is accepted is considering the ease to migrate to a delcarative format(and although it may seem verbose now, the declarative format will make the decision worth it).
 
 
 ## Getting started - Creating and using sample DB
