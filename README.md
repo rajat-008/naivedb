@@ -6,7 +6,7 @@ NaiveDB is a easy to use all Python database, inspired by the [TinyDB project](h
 * Clean the code
 * Wrtie tests and achieve 100% coverage
 * Allow updates to database structure in a declarative manner( inspired by Django models and GCP Cloud Deployment Manager)
-* Develop a simple CLI to interact with NaiveDB. As of now the only way to interact is trhough Python code.
+* Develop a simple CLI to interact with NaiveDB. As of now the only way to interact is through Python code.
 * Allow addition and updation of Tables after DB creation.
 
 ## Decision log
@@ -48,6 +48,7 @@ NaiveDB.create_db(name = "my_db", loc = "/home/rajat/college", tables = tables)
 ```
 ### Instantiating DB and perform queries
 
+```python
 #instantiate DB
 db = NaiveDB(db_loc = "/home/rajat/college")
 
