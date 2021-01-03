@@ -2,8 +2,7 @@
 
 NaiveDB is a easy to use all Python database, inspired by the [TinyDB project](https://github.com/msiemens/tinydb) and File Structures university course.
 
-=========================================================================================================
-##Getting started - Creating and using sample DB
+## Getting started - Creating and using sample DB
 ```python
 from naivedb import NaiveDB
 
