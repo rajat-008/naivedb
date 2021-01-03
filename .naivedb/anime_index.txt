@@ -1,9 +1,0 @@
-Naruto,0
-One Piece,46
-Full Metal Alchemist,92
-Dragon Ball,138
-Berserk,184
-Koruko's basketball,230
-Demon Slayer,276
-*word Art Online,322
-Sword Art Online,368
