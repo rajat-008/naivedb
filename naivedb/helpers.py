@@ -291,7 +291,11 @@ def printTree(tree):
                 items.append(item.values[0][0].split("\n")[0])
         else:
             for i, item in enumerate(x.values):
-                items.append(item[0].split("\n")[0])
+                try:
+                    items.append(item[0].split("\n")[0])
+                except Exception:
+                    items.append(item[0])
+                    continue
             if (flag == 0):
                 lev_leaf = lev
                 leaf = x
